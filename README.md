@@ -8,7 +8,7 @@
 │   └── distrib_oltp.db
 ├── DOC
 │   └── EnunciadoDW1Tdist.pdf
-├── imagens
+├── imagens                                 # imagens dos diagramas mostrados nas aulas
 │   ├── 1210021618.png
 │   ├── 1210021757.png
 │   └── 1210021805.png
