@@ -33,8 +33,7 @@
 # TODO
 
 ### :robot: ALEXANDRE
-:point_right: incluir coluna com flag feriado/fds na dimensão tempo  
-:point_right: Análise sobre o lançamento nas férias e nos feriados  
+:point_right: Apresentação
 :point_right: LAB2 (airflow)  
 :point_right: Visualização (gráficos)  
 # :point_right: dormir
@@ -47,11 +46,13 @@ falta o último passo - carga)
 ---
 
 ### :woman: GIOVANNA
+:point_right: incluir coluna com flag feriado/fds na dimensão tempo
 :point_right: Diagrama ER e OLAP  
-:point_right: Apresentação  
+  
 
 ---
 
 ### :cuba: GIL
 :point_right: Exportar o resultado das queries para o excel  
 :point_right: LAB2 (kettle)  
+:point_right: Análise sobre o lançamento nas férias e nos feriados
