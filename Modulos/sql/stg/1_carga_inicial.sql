@@ -1,5 +1,21 @@
+/*
+Rodar o script no banco de dados oltp. Ele vai "atachar" o banco stg e vai criar
+as tabelas
+ */
 ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/lab1/Dados/distrib_stg.db' AS stg;
-PRAGMA foreign_keys=off;
+
+
+/* 
+desligando as constraints para poder inserir os dados
+sem dar erro 
+ */
+PRAGMA foreign_keys=off; 
+
+/*
+###############################################################################
+INÍCIO DAS TABELAS QUE IRÃO COMPOR A DIM_PARTICIP
+###############################################################################
+*/
 
 DROP TABLE IF EXISTS stg."artista";
 CREATE TABLE stg."artista" (
@@ -9,7 +25,12 @@ CREATE TABLE stg."artista" (
 );
 insert into stg.artista (num, nome)
 select num,nome from artista;
-insert into stg.artista (id_artista) values(-1);
+insert into stg.artista (id_artista) values(-1); 
+/* IMPORTANTE:
+Registros de participação podem ter ids de atores que não estão na tabela, portanto,
+inserimos o valor -1 com os dados nulos, para fazer o "coalesce" e retornar
+esses dados com ids de artista inválidos
+*/
 
 
 DROP TABLE IF EXISTS stg."filme";
@@ -64,8 +85,18 @@ select
 	"papel",
 	"rank"
 from partic;
+/*
+###############################################################################
+FIM DAS TABELAS QUE IRÃO COMPOR A DIM_PARTICIP
+###############################################################################
+*/
 
 
+/*
+###############################################################################
+INÍCIO DAS TABELAS QUE IRÃO COMPOR A DIM_LOCAL 
+############################################################################### 
+ */
 DROP TABLE IF EXISTS stg."sala";
 CREATE TABLE stg."sala" (
 	"num"	integer,
@@ -108,6 +139,10 @@ CREATE TABLE stg."local" (
 	"estado"	INT,
 	"regiao"	INT,
 	"pais"	INT,
+	/*
+	as foreign_keys estão desligadas, portanto, essas a seguir não terão efeito
+	POR ENQUANTO
+	*/
 	foreign key (cidade) references cidade(num),
 	foreign key (estado) references estado(num),
 	foreign key (regiao) references regiao(num),
@@ -164,8 +199,18 @@ insert into stg.pais(
 	"nome"
 )
 select * from pais;
+/*
+###############################################################################
+FIM DAS TABELAS QUE IRÃO COMPOR A DIM_LOCAL 
+############################################################################### 
+ */
 
 
+/*
+###############################################################################
+TABELA QUE DARÁ ORIGEM À TABELA FATO
+############################################################################### 
+ */
 DROP TABLE IF EXISTS stg."exibt";
 CREATE TABLE stg."exibt" (
     "id_exibt" integer primary key autoincrement,
