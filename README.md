@@ -1,4 +1,4 @@
-# trabalho_dw
+# Trabalho de datawarehouse
 
 ### Organização dos arquivos:
 ```sh
