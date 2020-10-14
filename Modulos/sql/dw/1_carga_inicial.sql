@@ -1,7 +1,7 @@
 /*
 1) DESLIGANDO AS FOREIGN KEYS PARA FAZER A INSERÇÃO
 */
-ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
+-- ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
 PRAGMA foreign_keys=off;
 
 /*
@@ -11,17 +11,17 @@ CRIAÇÃO DA DIMENSÃO DIM_PARTICIP
  */
 drop table if exists dw.filme;
 create table dw.filme(
-    num primary key not null;
-    nome text;
+    num primary key not null,
+    nome text,
     genero integer
 );
 insert into dw.filme
 select 
-    f.num, 
+    coalesce(f.num, -1),
     f.nome, 
     coalesce(g.nome, 'outros')
 from filme f
-left join genero g on g.num=f.genero
+left join genero g on g.num=f.genero;
 
 drop TABLE if EXISTS dw.dim_particip;
 create table dw.dim_particip (
