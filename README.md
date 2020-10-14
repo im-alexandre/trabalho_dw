@@ -36,26 +36,32 @@ https://www.anbima.com.br/feriados/fer_nacionais/2003.asp
 # TODO
 
 ### :robot: ALEXANDRE
-:point_right: Apresentação
-:point_right: LAB2 (airflow)   
-:point_right: Visualização (gráficos)  
-# :point_right: dormir
-
-### :smirk: NELSON
+:point_right: LAB2 (airflow)    
+:point_right: Visualização (gráficos)   
 :point_right: Carga no dw. (as dimensões estão prontas no stg,
 falta o último passo - carga)  
-:point_right: as queries referentes às respostas do exercício (análises)  
+
+### :smirk: NELSON
+:point_right: as queries referentes às respostas do exercício (análises)   
+:point_right: Análise sobre o lançamento nas férias e nos feriados  
 
 ---
 
 ### :woman: GIOVANNA
-:point_right: incluir coluna com flag feriado/fds na dimensão tempo
-:point_right: Diagrama ER e OLAP  
+:point_right: Apresentação  
+:point_right: Diagrama ER, STG e OLAP  
   
 
 ---
 
 ### :cuba: GIL
-:point_right: Exportar o resultado das queries para o excel  
-:point_right: LAB2 (kettle)  
-:point_right: Análise sobre o lançamento nas férias e nos feriados
+:point_right: Exportar o resultado das queries para o excel   
+:point_right: LAB2 (kettle)   
+
+
+# Como utilizar
+Abrir o db distrib_oltp.db, executar o arquivo Modulos/sql/stg/carga_inicial.sql
+Abrir o db distrib_stg.db e executar o arquivo Modulos/sql/stg/criacao_dimensoes.sql
+
+### por enquanto:
+Utilizar o stg como se o dw sesse.  
