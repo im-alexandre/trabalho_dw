@@ -13,20 +13,20 @@ CRIAÇÃO DA DIMENSÃO DIM_PARTICIP
 drop TABLE if EXISTS dim_particip;
 create table dim_particip (
 id_particip integer primary key AUTOINCREMENT,
-cod_filme integer not null,
+num_filme integer not null,
 nome_artista TEXT,
 papel text,
 rank decimal(10,2),
-foreign key (cod_filme) references filme(id_filme)
+foreign key (num_filme) references filme(num)
 );
-insert into dim_particip (cod_filme, nome_artista, papel, rank)
+insert into dim_particip (num_filme, nome_artista, papel, rank)
 /*
 IMPORTANTE: O COALESCE RETORNA OS REGISTROS QUE TEM O ID_FILME NULO, ATRIBUINDO
 O -1 NO LUGAR DO NULL. COMO INSERIMOS ESSE REGISTRO VAZIO A TABELA DE FILMES, A
 INTEGRIDADE SERÁ MANTIDA E GARANTIREMOS QUE TODOS OS REGISTROS DA TABELA PARTICIP
 SEJAM CARREGADOS
 */
-select coalesce(f.id_filme, -1) cod_filme, a.nome, p.papel, p.rank
+select coalesce(f.num, -1) num_filme, a.nome, p.papel, p.rank
 from partic p
 join filme f on p.codfilme=f.num
 join artista a on p.codartista=a.num;
@@ -86,7 +86,7 @@ select
 	e.publico,
 	e.arrecad
 from exibt e
-left join dim_particip p on p.cod_filme=e.codfilme
+left join dim_particip p on p.num_filme=e.codfilme
 left join dim_local l on l.num_sala=e.codsala
 left join dim_tempo d on d.id_tempo=e.coddata;
 /*
