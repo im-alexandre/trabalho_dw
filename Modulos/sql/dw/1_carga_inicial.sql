@@ -1,7 +1,7 @@
 /*
 1) DESLIGANDO AS FOREIGN KEYS PARA FAZER A INSERÇÃO
 */
--- ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
+ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
 PRAGMA foreign_keys=off;
 
 /*
@@ -77,6 +77,14 @@ from sala s
     join regiao r on r.num=l.regiao
     join pais p on p.num=l.pais;
 
+/*
+################################################################################
+COPIANDO A DIMENSÃO TEMPO DO STG
+################################################################################
+ */
+create table dw.dim_tempo as 
+select * from dim_tempo;
+
 
 /*
 ################################################################################
@@ -106,6 +114,8 @@ from exibt e
 left join dim_particip p on p.num_filme=e.codfilme
 left join dim_local l on l.num_sala=e.codsala
 left join dim_tempo d on d.id_tempo=e.coddata;
+
+
 /*
 LIGANDO AS CONSTRAINTS DE RELACIONAMENTO. CASO AS TABELAS TENHAM ALGUM PROBLEMA
 DE INTEGRIDADE NOS RELACIONAMENTOS, RETORNARÁ UM ERRO */

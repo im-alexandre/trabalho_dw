@@ -26,11 +26,6 @@ CREATE TABLE stg."artista" (
 insert into stg.artista (num, nome)
 select num,nome from artista;
 insert into stg.artista (id_artista) values(-1); 
-/* IMPORTANTE:
-Registros de participação podem ter ids de atores que não estão na tabela, portanto,
-inserimos o valor -1 com os dados nulos, para fazer o "coalesce" e retornar
-esses dados com ids de artista inválidos
-*/
 
 
 DROP TABLE IF EXISTS stg."filme";
@@ -139,10 +134,6 @@ CREATE TABLE stg."local" (
 	"estado"	INT,
 	"regiao"	INT,
 	"pais"	INT,
-	/*
-	as foreign_keys estão desligadas, portanto, essas a seguir não terão efeito
-	POR ENQUANTO
-	*/
 	foreign key (cidade) references cidade(num),
 	foreign key (estado) references estado(num),
 	foreign key (regiao) references regiao(num),
