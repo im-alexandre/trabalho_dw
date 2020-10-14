@@ -1,8 +1,10 @@
 /*
-1) DESLIGANDO AS FOREIGN KEYS PARA FAZER A INSERÇÃO
+1) DESLIGANDO AS FOREIGN KEYS PARA FAZER AS INSERÇÕES
 */
-ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
 PRAGMA foreign_keys=off;
+
+ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_dw.db' AS dw;
+ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_stg.db' AS stg;
 
 /*
 ################################################################################
@@ -20,8 +22,8 @@ select
     coalesce(f.num, -1),
     f.nome, 
     coalesce(g.nome, 'outros')
-from filme f
-left join genero g on g.num=f.genero;
+from stg.filme f
+left join stg.genero g on g.num=f.genero;
 
 drop TABLE if EXISTS dw.dim_particip;
 create table dw.dim_particip (
@@ -30,7 +32,7 @@ create table dw.dim_particip (
     nome_artista TEXT,
     papel text,
     rank decimal(10,2),
-    foreign key (num_filme) references filme(num)
+    foreign key (num_filme) references dw.filme(num)
 );
 insert into dw.dim_particip (num_filme, nome_artista, papel, rank)
 select 
