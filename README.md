@@ -41,6 +41,9 @@ pip install -r requirements.txt
 :point_right: Baixe e instale o sqlite3 e um browser (opcional)
 
 ##### Utilização:
+```sh
+git clone https://github.com/im-alexandre/trabalho_dw
+```
 :point_right: Antes de tudo, execute o script de criação do esquema *STG*: 
 ```sh
 python Modulos/criação_da_dimensão_de_tempo.py
