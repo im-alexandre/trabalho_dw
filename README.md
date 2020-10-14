@@ -37,7 +37,7 @@ https://www.anbima.com.br/feriados/fer_nacionais/2003.asp
 
 ### :robot: ALEXANDRE
 :point_right: Apresentação
-:point_right: LAB2 (airflow)  
+:point_right: LAB2 (airflow)   
 :point_right: Visualização (gráficos)  
 # :point_right: dormir
 
