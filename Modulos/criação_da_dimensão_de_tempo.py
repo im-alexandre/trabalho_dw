@@ -13,7 +13,7 @@ from sqlalchemy import create_engine
 
 
 # Inserir o caminho dos dados aqui. O python faz o resto
-data_home = '/home/alexandre/Cursos/PUC/datawarehousing/lab1/Dados'
+data_home = '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados'
 
 
 # definindo a linguagem para PT_BR

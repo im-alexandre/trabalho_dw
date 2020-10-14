@@ -2,7 +2,7 @@
 Rodar o script no banco de dados oltp. Ele vai "atachar" o banco stg e vai criar
 as tabelas
  */
-ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/lab1/Dados/distrib_stg.db' AS stg;
+ATTACH DATABASE '/home/alexandre/Cursos/PUC/datawarehousing/trabalho_dw/Dados/distrib_stg.db' AS stg;
 
 
 /* 
