@@ -15,7 +15,7 @@ drop table if exists dw.filme;
 create table dw.filme(
     num primary key not null,
     nome text,
-    genero integer
+    genero text
 );
 insert into dw.filme
 select 
@@ -40,9 +40,9 @@ select
     a.nome,
     p.papel,
     p.rank
-from partic p
-join filme f on p.codfilme=f.num
-join artista a on p.codartista=a.num;
+from stg.partic p
+join stg.filme f on p.codfilme=f.num
+join stg.artista a on p.codartista=a.num;
 
 
 
@@ -71,13 +71,13 @@ select
     e.nome,
     r.nome,
     p.nome
-from sala s
-    join local l on l.num=s.codlocal
-    join cinema c on c.num=codcinema
-    join cidade cd on cd.num=l.cidade
-    join estado e on e.num=l.estado
-    join regiao r on r.num=l.regiao
-    join pais p on p.num=l.pais;
+from stg.sala s
+    join stg.local l on l.num=s.codlocal
+    join stg.cinema c on c.num=codcinema
+    join stg.cidade cd on cd.num=l.cidade
+    join stg.estado e on e.num=l.estado
+    join stg.regiao r on r.num=l.regiao
+    join stg.pais p on p.num=l.pais;
 
 /*
 ################################################################################
@@ -85,7 +85,7 @@ COPIANDO A DIMENSÃO TEMPO DO STG
 ################################################################################
  */
 create table dw.dim_tempo as 
-select * from dim_tempo;
+select * from stg.dim_tempo;
 
 
 /*
@@ -113,9 +113,9 @@ select
 	e.publico,
 	e.arrecad
 from exibt e
-left join dim_particip p on p.num_filme=e.codfilme
-left join dim_local l on l.num_sala=e.codsala
-left join dim_tempo d on d.id_tempo=e.coddata;
+left join stg.dim_particip p on p.num_filme=e.codfilme
+left join stg.dim_local l on l.num_sala=e.codsala
+left join stg.dim_tempo d on d.id_tempo=e.coddata;
 
 
 /*
