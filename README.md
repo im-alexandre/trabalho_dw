@@ -1,7 +1,5 @@
 # Trabalho de datawarehouse
 
-Calendário 2003
-https://www.anbima.com.br/feriados/fer_nacionais/2003.asp
 
 ### Organização dos arquivos e diretorios:
 ```sh
@@ -13,18 +11,6 @@ https://www.anbima.com.br/feriados/fer_nacionais/2003.asp
 ├── DOC
 │   └── EnunciadoDW1Tdist.pdf
 ├── graficos
-│   ├── exibicoes_mensais_diretor.png
-│   ├── exibicoes_mensais_diretor.svg
-│   ├── metricas_semana_cidade.svg
-│   ├── metricas_semana_estado.svg
-│   ├── publico_mensal_ator.png
-│   ├── publico_semana_cidade.png
-│   ├── publico_semana_estado.png
-│   └── publico_semana_regiao.png
-├── imagens
-│   ├── 1210021618.png
-│   ├── 1210021757.png
-│   └── 1210021805.png
 ├── index.md
 ├── main.tex
 ├── Modulos
@@ -62,9 +48,9 @@ python Modulos/criação_da_dimensão_de_tempo.py
 :point_right: Para executar os scripts de Extração, transformação e carga ***(ETL)***,
 conecte ao distrib_oltp.db, no diretório "Dados" e execute os scripts na seguinte
 ordem:  
-0️⃣ Modulos/sql/stg/1_carga_inicial.sql  
-1️⃣Conecte ao banco recém criado (distrib_stg.db)  
-2️⃣ Modulos/sql/dw/1_carga_inicial.sql  
+    0️⃣ Modulos/sql/stg/1_carga_inicial.sql  
+    1️⃣Conecte ao banco recém criado (distrib_stg.db)  
+    2️⃣ Modulos/sql/dw/1_carga_inicial.sql  
 :point_right: Para executar as queries de métricas e análise, não há ordem.  
 
 ### IMPORTANTE‼️ 
@@ -78,13 +64,17 @@ modifique nos scripts) ```criação_da_dimensão_de_tempo.py``` ```stg/1_carga_i
 
 # TODO
 
+### IMPORTANTE
+#### :point_right: REVISAR A DOCUMENTAÇÃO, RETIRAR OS "TODOS" E ALTERAR O NECESSÁRIO
+#### :point_right: TESTEM O PROCESSO INTEIRO E VERIFIQUEM SE HÁ ERROS!!!
+
+
 ### :robot: ALEXANDRE
 :point_right: LAB2 (airflow)    
-:point_right: Visualização (gráficos)   ✅
+:point_right: Visualização (gráficos)   ✅  
 :point_right: Carga no dw. (as dimensões estão prontas no stg, falta o último passo - carga)   ✅
 
 ### :smirk: NELSON
-:point_right: as queries referentes às respostas do exercício (análises)   
 :point_right: Análise sobre o lançamento nas férias e nos feriados   
 
 ---
@@ -97,7 +87,3 @@ modifique nos scripts) ```criação_da_dimensão_de_tempo.py``` ```stg/1_carga_i
 ### :cuba: GIL
 :point_right: Apresentação  
 :point_right: LAB2 (kettle)   
-
-# Como utilizar
-Abrir o db distrib_oltp.db, executar o arquivo Modulos/sql/stg/carga_inicial.sql
-Abrir o db distrib_stg.db e executar o arquivo Modulos/sql/stg/criacao_dimensoes.sql  
