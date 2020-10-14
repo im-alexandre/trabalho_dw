@@ -22,7 +22,7 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 # criando uma lista com os feriados no Brasil no período:
 feriados_bra= holidays.Brazil()
 feriados = []
-for feriado in feriados_bra['2002-12-31': '2003-12-31'] :
+for feriado in feriados_bra['2002-12-31': '2003-11-30'] :
     feriados.append(feriado)
 
 # Criando dataframe vazio para rececber os dados de tempo
@@ -30,7 +30,7 @@ df = pd.DataFrame()
 # utilizando o método pandas.date_range para gerar um iterável de datas e
 # O END É EXCLUSIVO, OU SEJA, SE FOR INFORMADA A ÚLTIMA DATA PRESENTE NO
 # DATASET, PERDEM-SE REGISTROS
-df['data'] = pd.date_range(start='31/12/2002', end='31/12/2003')
+df['data'] = pd.date_range(start='31/12/2002', end='30/11/2003')
 """redefinindo a coluna para ser o nome de data
 criando as demais colunas
 """
